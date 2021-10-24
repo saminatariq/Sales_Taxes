@@ -19,7 +19,7 @@ namespace Sales_Taxes_
         {
             InitializeComponent();
         }
-//__________Connection String_____________________________________________________________________________________
+//__________Connection String________________(Please Change Connection String Accordingly)_____________________________________________________________________
         SqlConnection con = new SqlConnection(@"Data Source=SAM-LAPTOP;Initial Catalog=Database_Sales_Taxes;Integrated Security=True");
 
         //_________________________Print__________________________________________________________________________
