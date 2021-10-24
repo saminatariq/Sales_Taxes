@@ -19,10 +19,10 @@ namespace Sales_Taxes_
         {
             InitializeComponent();
         }
-        //Connection String
+//__________Connection String_____________________________________________________________________________________
         SqlConnection con = new SqlConnection(@"Data Source=SAM-LAPTOP;Initial Catalog=Database_Sales_Taxes;Integrated Security=True");
 
-
+        //_________________________Print__________________________________________________________________________
         Bitmap rechnung;
         private void button2_Click(object sender, EventArgs e)
         {
@@ -49,7 +49,7 @@ namespace Sales_Taxes_
 
         private void button3_Click(object sender, EventArgs e)
         {
-            // Price in Textbox
+   //___________________________ Price in Textbox____________________________________________________________________
             con.Open();
             if (comboBox2.Text != "")
             {
@@ -61,12 +61,12 @@ namespace Sales_Taxes_
                 }
                 con.Close();
             }
-            //Total Price Calculation
+  //__________________________Total Price Calculation_________________________________________________________________
             double quantity = double.Parse(numericUpDown1.Text.ToString());
             double tprice = double.Parse(textBox1.Text.ToString());
             double totalprice = quantity * tprice;
             
-            //Sales Tax Calculation
+ //___________________________Sales Tax Calculation___________________________________________________________________
             double stax = 0.0;
             con.Open();
             SqlCommand Check_Type = new SqlCommand("SELECT Product_Type FROM Product WHERE Product_Name='" + comboBox2.Text + "' ", con);
@@ -112,7 +112,7 @@ namespace Sales_Taxes_
             }
             con.Close();
 
-            //Imported Product Taxes Calculation
+  //________________________________Imported Product Taxes Calculation_________________________________________________
             con.Open();
             double itax = 0.0;
             SqlCommand Check_Imported = new SqlCommand("SELECT Product_Imported FROM Product WHERE Product_Name='" + comboBox2.Text + "'", con);
@@ -134,10 +134,10 @@ namespace Sales_Taxes_
             double Sales_Tax = itax + stax;
             Sales_Tax = Math.Round(Sales_Tax, 2);
                 
-            // dataGridView
+ //________________________________ dataGridView______________________________________________________________
             dataGridView1.Rows.Add(numericUpDown1.Text,comboBox2.Text,textBox1.Text,totalprice,Sales_Tax);
 
-            //Sum of Sales Tax Calculation
+ //_____________________________Sum of Sales Tax Calculation___________________________________________________
             double sales_tax_sum = 0.0;
             for(int i=0; i<dataGridView1.Rows.Count; ++i)
             {
@@ -146,7 +146,7 @@ namespace Sales_Taxes_
             textBox2.Text = sales_tax_sum.ToString();
 
             
-            //Sum of Price + Sales Tax Calculation
+//____________________________Sum of Price + Sales Tax Calculation________________________________________________
             double grand_total_sum = 0.0;
             for (int j = 0; j < dataGridView1.Rows.Count; ++j)
             {
@@ -169,7 +169,7 @@ namespace Sales_Taxes_
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Product in ComboBox
+//__________________________________Product in ComboBox___________________________________________________________
             con.Open();
             SqlCommand cmd = new SqlCommand("SELECT * FROM Product", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -196,7 +196,7 @@ namespace Sales_Taxes_
 
         private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            //Price of Product with Sales Tax
+ //___________________________Price of Product with Sales Tax__________________________________________
             double g_total = 0.0;
             for (int k = 0; k < dataGridView1.Rows.Count; ++k)
             {
