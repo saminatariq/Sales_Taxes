@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.Sql;
+using System.Drawing.Printing;
 
 namespace Sales_Taxes_
 {
@@ -20,10 +21,25 @@ namespace Sales_Taxes_
         }
         //Connection String
         SqlConnection con = new SqlConnection(@"Data Source=SAM-LAPTOP;Initial Catalog=Database_Sales_Taxes;Integrated Security=True");
-        
+
+
+        Bitmap rechnung;
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            int height=dataGridView1.Height;
+            dataGridView1.Height = dataGridView1.RowCount * dataGridView1.RowTemplate.Height * 2;
+            rechnung = new Bitmap(dataGridView1.Width, dataGridView1.Height);
+            dataGridView1.DrawToBitmap(rechnung, new Rectangle(0, 0, dataGridView1.Width, dataGridView1.Height));
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.PrintPreviewControl.Zoom = 1;
+            printPreviewDialog1.ShowDialog();
+            dataGridView1.Height = height;
+        }
+
+        private void PrintDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(rechnung, 0, 0);
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -199,9 +215,13 @@ namespace Sales_Taxes_
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            
             Form1 x = new Form1();
             x.Show();
-            
+
+            this.Hide();
+
         }
     }
 }

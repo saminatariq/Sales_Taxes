@@ -459,11 +459,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Git_Project1\\Sales_Taxes\\Sales_Taxes_Prod\\Sales_Taxes_\\Sales_Taxes_.csproj",
+      "projectUniqueName": "D:\\Git_Project2\\Sales_Taxes\\Sales_Taxes_Prod\\Sales_Taxes_\\Sales_Taxes_.csproj",
       "projectName": "Sales_Taxes_",
-      "projectPath": "D:\\Git_Project1\\Sales_Taxes\\Sales_Taxes_Prod\\Sales_Taxes_\\Sales_Taxes_.csproj",
+      "projectPath": "D:\\Git_Project2\\Sales_Taxes\\Sales_Taxes_Prod\\Sales_Taxes_\\Sales_Taxes_.csproj",
       "packagesPath": "C:\\Users\\Sam\\.nuget\\packages\\",
-      "outputPath": "D:\\Git_Project1\\Sales_Taxes\\Sales_Taxes_Prod\\Sales_Taxes_\\obj\\",
+      "outputPath": "D:\\Git_Project2\\Sales_Taxes\\Sales_Taxes_Prod\\Sales_Taxes_\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Sam\\AppData\\Roaming\\NuGet\\NuGet.Config",
